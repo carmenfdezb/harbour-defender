@@ -12,7 +12,7 @@ Page {
             MenuItem {
                 text: qsTr("Disable")
                 onClicked: {
-                    remorse.execute("Preparing", function() {
+                    remorse.execute(qsTr("Preparing"), function() {
                         disableAll()
                     })
                 }
@@ -20,7 +20,7 @@ Page {
             MenuItem {
                 text: qsTr("Update now")
                 onClicked: {
-                    remorse.execute("Preparing update", function() {
+                    remorse.execute(qsTr("Preparing update"), function() {
                         updateNow()
                     })
                 }

@@ -35,13 +35,14 @@ Page {
             Label {
                 x: Theme.paddingLarge
                 width: parent.width - 2*x
-                text: qsTr("You can add custom lists by editing the file /etc/"+appName.toLowerCase()+".conf as root (either using the command line or an appropriate editor). See other sections in the config file for inspiration. In the square brackets [] should be a unique id.")
+                text: qsTr("You can add custom lists by editing the file /etc/%1.conf as root (either using the command line or an appropriate editor). See other sections in the config file for inspiration. In the square brackets [] should be a unique id.").arg(appName.toLowerCase())
                 color: Theme.primaryColor
                 wrapMode: Text.Wrap
                 font.pixelSize: Theme.fontSizeMedium
             }
             SectionHeader {
                 text: qsTr("Why can't I add new sources from the app?")
+                wrapMode: Text.Wrap
             }
             Label {
                 x: Theme.paddingLarge
@@ -64,6 +65,7 @@ Page {
             }
             SectionHeader {
                 text: qsTr("Why can't I add new entries from the app?")
+                wrapMode: Text.Wrap
             }
             Label {
                 x: Theme.paddingLarge

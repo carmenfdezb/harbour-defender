@@ -11,7 +11,7 @@ Page {
         anchors.fill: parent
         header: SearchField {
             width: parent.width
-            placeholderText: "Search cookies"
+            placeholderText: qsTr("Search cookies")
             validator: RegExpValidator { regExp: /[0-9A-Za-z]+/ }
 
             EnterKey.onClicked: {
@@ -39,7 +39,7 @@ Page {
             MenuItem {
                 text: qsTr("Delete all blacklisted")
                 onClicked: {
-                    remorse.execute("Deleting", function() {
+                    remorse.execute(qsTr("Deleting"), function() {
                         py.call(appname+'.cookie_delete_blacklist', [cookieBlacklist, searchString], function (result) {
                             cookiesModel.clear()
                             for (var i = 0; i < result.length; i++) {
@@ -55,7 +55,7 @@ Page {
             MenuItem {
                 text: qsTr("Delete all not whitelisted")
                 onClicked: {
-                    remorse.execute("Deleting", function() {
+                    remorse.execute(qsTr("Deleting"), function() {
                         py.call(appname+'.cookie_delete_whitelist', [cookieWhitelist, searchString], function (result) {
                             cookiesModel.clear()
                             for (var i = 0; i < result.length; i++) {
@@ -80,7 +80,7 @@ Page {
                     property bool inWhitelist: (cookieWhitelist.indexOf(section) >= 0)
                     contentHeight: Theme.itemSizeMedium
                     function remove() {
-                        remorseAction("Deleting", function() {
+                        remorseAction(qsTr("Deleting"), function() {
                             py.call(appname+'.cookie_delete_domain', [section, searchString], function(result) {
                                 cookiesModel.clear()
                                 for (var i = 0; i < result.length; i++) {
@@ -108,7 +108,7 @@ Page {
                         id: contextMenu
                         ContextMenu {
                             MenuItem {
-                                text: "Remove"
+                                text: qsTr("Remove")
                                 onClicked: remove()
                             }
                             MenuItem {
@@ -159,7 +159,7 @@ Page {
             contentHeight: Theme.itemSizeMedium
             ListView.onRemove: animateRemoval(listItem)
             function remove() {
-                remorseAction("Deleting", function() {
+                remorseAction(qsTr("Deleting"), function() {
                     py.call(appname+'.cookie_delete_single', [cookiesModel.get(index).id, searchString], function(result) {
                         listView.model.remove(index)
                     })
@@ -177,7 +177,7 @@ Page {
                 id: contextMenu
                 ContextMenu {
                     MenuItem {
-                        text: "Remove"
+                        text: qsTr("Remove")
                         onClicked: remove()
                     }
                 }
